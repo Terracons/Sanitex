@@ -11,6 +11,7 @@ from dotenv import dotenv_values
 config_credentials = dotenv_values(".env")
 SECRET_KEY = config_credentials["SECRET_KEY"]
 ALGORITHM = config_credentials["ALGORITHM"]
+
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
