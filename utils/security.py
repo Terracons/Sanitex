@@ -17,6 +17,11 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
 
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
+if SECRET_KEY is None or ALGORITHM is None:
+    raise ValueError("SECRET_KEY or ALGORITHM is missing from the environment variables")
+
+print(f"Loaded SECRET_KEY: {SECRET_KEY}")  # Debugging
+print(f"Loaded ALGORITHM: {ALGORITHM}")  # Debugging
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
