@@ -5,12 +5,16 @@ from schemas import UserCreate, UserResponse, UserUpdate
 from models import User
 from utils.security import  get_current_user,get_current_admin
 from jose import jwt, JWTError
-from dotenv import dotenv_values
 from fastapi.security import OAuth2PasswordRequestForm
 
-config_credentials = dotenv_values(".env")
-SECRET_KEY = config_credentials["SECRET_KEY"]
-ALGORITHM = config_credentials["ALGORITHM"]
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  
+
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 
 router = APIRouter()
 

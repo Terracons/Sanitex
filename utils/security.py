@@ -6,11 +6,14 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from database import get_db
 from models import User
-from dotenv import dotenv_values
+from dotenv import load_dotenv
+import os
 
-config_credentials = dotenv_values(".env")
-SECRET_KEY = config_credentials["SECRET_KEY"]
-ALGORITHM = config_credentials["ALGORITHM"]
+load_dotenv()  
+
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 

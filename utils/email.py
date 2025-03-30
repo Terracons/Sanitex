@@ -1,23 +1,28 @@
 from fastapi import BackgroundTasks
 from fastapi_mail import ConnectionConfig, FastMail, MessageSchema, MessageType
 from jose import jwt
-from dotenv import dotenv_values
 from models import User
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 from sqlalchemy.orm import Session
 from jinja2 import Template
 
-# Load environment variables
-config_credentials = dotenv_values(".env")
-SECRET_KEY = config_credentials["SECRET_KEY"]
-ALGORITHM = config_credentials["ALGORITHM"]
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  
+
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
+EMAIL = os.getenv("EMAIL")
+PASSWORD = os.getenv("PASSWORD")
 
 # Email Configuration
 conf = ConnectionConfig(
-    MAIL_USERNAME=config_credentials["EMAIL"],
-    MAIL_PASSWORD=config_credentials["PASSWORD"],
-    MAIL_FROM=config_credentials["EMAIL"],
+    MAIL_USERNAME=EMAIL,
+    MAIL_PASSWORD=PASSWORD,
+    MAIL_FROM=EMAIL,
     MAIL_PORT=465,  # Port 465 for SSL
     MAIL_SERVER="smtp.gmail.com",
     MAIL_STARTTLS=False,  # False for SSL

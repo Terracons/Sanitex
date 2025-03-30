@@ -7,14 +7,17 @@ from models import User
 from utils.security import hash_password, get_current_user, create_access_token, authenticate_user
 from utils.email import send_email_verification, send_welcome_email, send_reset_password_email
 from jose import jwt, JWTError
-from dotenv import dotenv_values
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.templating import Jinja2Templates
 
-config_credentials = dotenv_values(".env")
-SECRET_KEY = config_credentials["SECRET_KEY"]
-ALGORITHM = config_credentials["ALGORITHM"]
+from dotenv import load_dotenv
+import os
 
+load_dotenv()  
+
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 router = APIRouter()
 
 @router.post("/register", response_model=UserResponse)

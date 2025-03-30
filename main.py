@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
 from routers import auth,users,workers,booking,reviews
 import uvicorn
-from mangum import Mangum
 
 # ===========================
 # 🔹 Initialize FastAPI App
@@ -11,7 +10,7 @@ from mangum import Mangum
 app = FastAPI(title="AI-Driven House Cleaning & Fumigation Booking API",
               description="Manage users, bookings, pricing, AI chat, and more.",
               version="1.0.0")
-handler = Mangum(app)
+
 # ===========================
 # 🔹 Database Setup
 # ===========================
