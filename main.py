@@ -7,8 +7,8 @@ import uvicorn
 # ===========================
 # 🔹 Initialize FastAPI App
 # ===========================
-app = FastAPI(title="AI-Driven House Cleaning & Fumigation Booking API",
-              description="Manage users, bookings, pricing, AI chat, and more.",
+app = FastAPI(title="sanitex House Cleaning & Fumigation Booking API",
+              description="Manage users, bookings, workers, AI chat, and more.",
               version="1.0.0")
 
 # ===========================
